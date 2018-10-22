@@ -19,7 +19,7 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new level1().Show();
+            new FallingRocks.level1().Show();
             Hide();
         }
 
