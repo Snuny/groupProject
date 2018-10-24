@@ -88,11 +88,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\Downloads\FallingRocks\FallingRocks\FallingRocks.csproj">
-      <Project>{81b45a10-5d24-4d9f-9c7a-bf35a7e5297e}</Project>
-      <Name>FallingRocks</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
