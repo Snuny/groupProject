@@ -12,9 +12,11 @@ namespace WindowsFormsApp1
 {
     public partial class MainMenu : Form
     {
+        
         public MainMenu()
         {
             InitializeComponent();
+            pauseMenu.Hide();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -31,7 +33,7 @@ namespace WindowsFormsApp1
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
-            this.Hide();
+            
         }
 
         private void button1_Click_1(object sender, EventArgs e)//restartbutton
