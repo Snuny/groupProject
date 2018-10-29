@@ -16,7 +16,6 @@ namespace WindowsFormsApp1
         public MainMenu()
         {
             InitializeComponent();
-            pauseMenu.Hide();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -29,21 +28,6 @@ namespace WindowsFormsApp1
         {
             new LevelSelect().Show();
             Hide();
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)//restartbutton
-        {
-
-        }
-
-        private void ExitButton_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

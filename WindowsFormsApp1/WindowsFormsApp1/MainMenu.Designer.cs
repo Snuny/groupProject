@@ -31,10 +31,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.newgamebutton = new System.Windows.Forms.Button();
             this.levelselectbutton = new System.Windows.Forms.Button();
-            this.pauseMenu = new System.Windows.Forms.GroupBox();
-            this.ExitButton = new System.Windows.Forms.Button();
-            this.restartButton = new System.Windows.Forms.Button();
-            this.pauseMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -72,51 +68,17 @@
             this.levelselectbutton.UseVisualStyleBackColor = false;
             this.levelselectbutton.Click += new System.EventHandler(this.levelselectbutton_Click);
             // 
-            // pauseMenu
-            // 
-            this.pauseMenu.Controls.Add(this.ExitButton);
-            this.pauseMenu.Controls.Add(this.restartButton);
-            this.pauseMenu.Location = new System.Drawing.Point(195, 310);
-            this.pauseMenu.Name = "pauseMenu";
-            this.pauseMenu.Size = new System.Drawing.Size(447, 119);
-            this.pauseMenu.TabIndex = 3;
-            this.pauseMenu.TabStop = false;
-            this.pauseMenu.Text = "Paused";
-            this.pauseMenu.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
-            // ExitButton
-            // 
-            this.ExitButton.Location = new System.Drawing.Point(273, 33);
-            this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Size = new System.Drawing.Size(96, 55);
-            this.ExitButton.TabIndex = 1;
-            this.ExitButton.Text = "Exit";
-            this.ExitButton.UseVisualStyleBackColor = true;
-            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
-            // 
-            // restartButton
-            // 
-            this.restartButton.Location = new System.Drawing.Point(85, 33);
-            this.restartButton.Name = "restartButton";
-            this.restartButton.Size = new System.Drawing.Size(96, 55);
-            this.restartButton.TabIndex = 0;
-            this.restartButton.Text = "Restart";
-            this.restartButton.UseVisualStyleBackColor = true;
-            this.restartButton.Click += new System.EventHandler(this.button1_Click_1);
-            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SteelBlue;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.pauseMenu);
             this.Controls.Add(this.levelselectbutton);
             this.Controls.Add(this.newgamebutton);
             this.Controls.Add(this.label1);
             this.Name = "MainMenu";
             this.Text = "Falling Rocks";
-            this.pauseMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -126,9 +88,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button newgamebutton;
         private System.Windows.Forms.Button levelselectbutton;
-        private System.Windows.Forms.GroupBox pauseMenu;
-        private System.Windows.Forms.Button restartButton;
-        private System.Windows.Forms.Button ExitButton;
     }
 }
 

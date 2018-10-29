@@ -15,6 +15,7 @@ namespace FallingRocks
         bool goLeft = false;
         bool goRight = false;
         bool jumpUp = false;
+        bool pause = false;
 
         int jumpingSpeed = 10;
         int force = 8;
@@ -23,6 +24,7 @@ namespace FallingRocks
         public level1()
         {
             InitializeComponent();
+            pauseMenu.Hide();
         }
 
         private void keyisdown(object sender, KeyEventArgs e)
@@ -41,6 +43,11 @@ namespace FallingRocks
             {
                 jumpUp = true;
             }
+
+            if (e.KeyCode == Keys.Escape)
+            {
+                pause = true;
+            }
         }
 
         private void keyisup(object sender, KeyEventArgs e)
@@ -58,6 +65,11 @@ namespace FallingRocks
             if (jumpUp)
             {
                 jumpUp = false;
+            }
+
+            if (e.KeyCode == Keys.Escape)
+            {
+                pause = false;
             }
         }
 
@@ -87,6 +99,11 @@ namespace FallingRocks
                 force -= 1;
             }
 
+            if (pause)
+            {
+                pauseMenu.Show();
+            }
+
             else
             {
                 jumpingSpeed = 12;
@@ -104,6 +121,23 @@ namespace FallingRocks
                     }
                 }
             }
+        }
+
+        private void level1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void restartButton_Click(object sender, EventArgs e)
+        {
+            new level1().Show();
+            Hide();
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            new WindowsFormsApp1.MainMenu().Show();
+            Hide();
         }
     }
 }
