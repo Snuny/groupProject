@@ -19,6 +19,7 @@ namespace FallingRocks
         int jumpingSpeed = 10;
         int force = 8;
         int score = 0;
+        int fallingSpeed = 2;
 
         public level1()
         {
@@ -64,6 +65,7 @@ namespace FallingRocks
         private void timer1_Tick(object sender, EventArgs e)
         {
             player.Top += jumpingSpeed;
+            rock.Top += fallingSpeed;
 
             //Key Controls
             if (jumpUp && force < 0)
@@ -102,8 +104,31 @@ namespace FallingRocks
                         force = 8;
                         player.Top = x.Top - player.Height;
                     }
+
+                    if (rock.Bounds.IntersectsWith(x.Bounds) && !jumpUp)
+                    {
+                        rock.Top = x.Top - rock.Height;
+                    }
+                }
+
+                if (x is PictureBox && x.Tag == "rock")
+                {
+
+                    if (x.Bounds.IntersectsWith(player.Bounds))
+                    {
+                        x.Top = player.Top - x.Height;
+                    }
                 }
             }
+        }
+
+        private void fallOnLoad(object sender, AsyncCompletedEventArgs e)
+        {
+            //PictureBox p = new PictureBox();
+            //p.Location = new Point(0, 0);
+            //p.Size = new Size(100, 400);
+            //p.BorderStyle = BorderStyle.FixedSingle;
+            //this.Controls.Add(p);
         }
     }
 }
