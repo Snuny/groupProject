@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1;
+using System.Diagnostics;
 
 namespace FallingRocks
 {
@@ -20,6 +22,20 @@ namespace FallingRocks
         int force = 8;
         int score = 0;
         int fallingSpeed = 2;
+        int activeRock = 0;
+
+        List<Rock> Rocks = new List<Rock>()
+            {
+                new Rock(),
+                new Rock(),
+                new Rock(),
+                new Rock(),
+                new Rock(),
+                new Rock(),
+                new Rock(),
+                new Rock(),
+                new Rock()
+            };
 
         public level1()
         {
@@ -65,7 +81,9 @@ namespace FallingRocks
         private void timer1_Tick(object sender, EventArgs e)
         {
             player.Top += jumpingSpeed;
-            rock.Top += fallingSpeed;
+            pictureBox3.Top += fallingSpeed;
+            if (Rocks[activeRock].FallingActive = true)
+                Rocks[activeRock].Top += fallingSpeed;
 
             //Key Controls
             if (jumpUp && force < 0)
@@ -105,21 +123,53 @@ namespace FallingRocks
                         player.Top = x.Top - player.Height;
                     }
 
-                    if (rock.Bounds.IntersectsWith(x.Bounds) && !jumpUp)
+                    if (pictureBox3.Bounds.IntersectsWith(x.Bounds))
                     {
-                        rock.Top = x.Top - rock.Height;
+                        pictureBox3.Top = x.Top - pictureBox3.Height;
                     }
-                }
 
-                if (x is PictureBox && x.Tag == "rock")
-                {
-
-                    if (x.Bounds.IntersectsWith(player.Bounds))
+                    foreach (Rock rock in Rocks)
                     {
-                        x.Top = player.Top - x.Height;
+                        //Add falling active and counter for rock list
+                        if (rock is Rock && rock.Tag == "rock" && rock.FallingActive == true)
+                        {
+
+                            if (rock.Bounds.IntersectsWith(player.Bounds))
+                            {
+                                rock.Top = player.Top - rock.Height;
+                            }
+                            //Rocks[activeRock].FallingActive = true;
+                            if (rock.Bounds.IntersectsWith(x.Bounds))
+                            {
+                                rock.Top = x.Top - rock.Height;
+                                activeRock++;
+                                Rocks[activeRock].FallingActive = true;
+                                Rocks[activeRock].Visible = true;
+                            }
+                        }
                     }
                 }
             }
+
+            ////foreach (Rock x in this.Controls.OfType<Rock>())
+            //foreach (Rock rock in Rocks)
+            //{
+            //    //Add falling active and counter for rock list
+            //    if (x is Rock && x.Tag == "rock" && x.FallingActive == true)
+            //    {
+
+            //        if (rock.Bounds.IntersectsWith(x.Bounds))
+            //        {
+            //            rock.Top = x.Top - rock.Height;
+            //        }
+            //        //Rocks[activeRock].FallingActive = true;
+            //        if (x.Bounds.IntersectsWith(player.Bounds))
+            //        {
+            //            x.Top = player.Top - x.Height;
+            //            activeRock++;
+            //        }
+            //    }
+            //}
         }
 
         private void fallOnLoad(object sender, AsyncCompletedEventArgs e)
@@ -129,6 +179,35 @@ namespace FallingRocks
             //p.Size = new Size(100, 400);
             //p.BorderStyle = BorderStyle.FixedSingle;
             //this.Controls.Add(p);
+        }
+
+        private void Form1_Load(object sender, System.EventArgs e)
+        //private void Form1_Load(object sender, AsyncCompletedEventArgs e)
+        {
+
+            Point[] locations = new Point[]
+            {
+                new Point(100, 100),
+                new Point(340, 100),
+                new Point(540, 100),
+                new Point(100, 100),
+                new Point(340, 100),
+                new Point(540, 100),
+                new Point(100, 100),
+                new Point(340, 100),
+                new Point(540, 100)
+            };
+
+            for (int i = 0; i < Rocks.Count; i++)
+            {
+                Rocks[i].SetLocation(locations[i]);
+                Rocks[i].Visible = false;
+                this.Controls.Add(Rocks[i]);
+            }
+
+            Rocks[0].FallingActive = true;
+            Rocks[0].Visible = true;
+
         }
     }
 }
