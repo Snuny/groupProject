@@ -207,6 +207,23 @@ namespace FallingRocks
 
             Rocks[0].FallingActive = true;
             Rocks[0].Visible = true;
+            WaitSomeTime();
+        }
+
+        public async void WaitSomeTime()
+        {
+            await Task.Delay(1000);
+            label1.Text = "2";
+            await Task.Delay(1000);
+            label1.Text = "1";
+            await Task.Delay(1000);
+            label1.Visible = false;
+
+            timer1.Enabled = true;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
 
         }
     }
